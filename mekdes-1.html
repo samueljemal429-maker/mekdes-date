@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Operation: Date Mekdes ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#ff758c,#ffb6c1,#ffc3a0);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.card {
+    background: white;
+    width: 90%;
+    max-width: 430px;
+    padding: 30px 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px #0003;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff477e;
+}
+
+p {
+    color: #555;
+    line-height: 1.7;
+}
+
+.heart {
+    font-size: 65px;
+    animation: beat 1s infinite;
+}
+
+@keyframes beat {
+    50% { transform: scale(1.2); }
+}
+
+button {
+    border: none;
+    padding: 14px 22px;
+    margin: 8px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#yes {
+    background: #ff477e;
+    color: white;
+}
+
+#no {
+    background: #eee;
+    color: #333;
+}
+
+input {
+    width: 90%;
+    padding: 13px;
+    margin: 10px;
+    border: 2px solid pink;
+    border-radius: 12px;
+}
+
+.hidden {
+    display: none;
+}
+
+.small {
+    font-size: 12px;
+    color: #999;
+}
+
+.floating {
+    position: fixed;
+    bottom: -30px;
+    font-size: 25px;
+    animation: float 5s linear forwards;
+    pointer-events: none;
+    z-index: 5;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FIRST PAGE -->
+
+<div class="card" id="main">
+
+<div class="heart">💌</div>
+
+<h1>Hey Mekdes! 😂❤️</h1>
+
+<p>
+⚠️ IMPORTANT NOTICE ⚠️
+<br><br>
+
+You have been selected for a very special mission.
+
+<strong>MISSION: Go on a date with Samuel.</strong>
+
+<br><br>
+
+Benefits include:
+<br>
+😂 Unlimited jokes
+<br>
+☕ Coffee and good conversations
+<br>
+🍫 Possible chocolate
+<br>
+❤️ Beautiful memories
+
+<br><br>
+
+So... are you accepting this mission?
+</p>
+
+<button id="yes" onclick="accept()">ACCEPT ❤️</button>
+
+<button id="no" onclick="reject()">REJECT 😂</button>
+
+<p class="small">Powered by Samuel's courage™</p>
+
+</div>
+
+
+<!-- SECOND PAGE -->
+
+<div class="card hidden" id="success">
+
+<div class="heart">🥳</div>
+
+<h1>MISSION ACCEPTED!</h1>
+
+<p>
+Mekdes, congratulations! 😂❤️
+
+<br><br>
+
+You just made Samuel's day.
+
+Your reward:
+<br>
+One lovely date in Dilla! 🌹
+
+<br><br>
+
+Now let's organize our adventure.
+</p>
+
+<h3>📍 Location: Dilla</h3>
+
+<h3>📅 Choose your date</h3>
+
+<input type="date" id="date">
+
+<h3>⏰ Choose your time</h3>
+
+<input type="time" id="time">
+
+<br>
+
+<button id="yes" onclick="sendWhatsApp()">
+SEND TO SAMUEL 💌
+</button>
+
+<p class="small">
+Your choice is a suggestion.
+We'll confirm the plan together.
+</p>
+
+</div>
+
+
+<script>
+
+// YES BUTTON
+
+function accept() {
+
+    document.getElementById("main").classList.add("hidden");
+
+    document.getElementById("success").classList.remove("hidden");
+
+    confetti();
+
+}
+
+
+// NO BUTTON
+
+function reject() {
+
+    const messages = [
+        "Mission rejected? 😂 No problem!",
+        "Samuel needs to update his proposal 😭",
+        "Okay, your decision is respected ❤️",
+        "At least the chocolate offer was serious 😂"
+    ];
+
+    alert(messages[Math.floor(Math.random()*messages.length)]);
+
+}
+
+
+// HEART ANIMATION
+
+function confetti() {
+
+    const icons = ["❤️","💕","💖","🌹","✨","🥰"];
+
+    for(let i=0; i<50; i++) {
+
+        let item = document.createElement("div");
+
+        item.className = "floating";
+
+        item.innerHTML = icons[Math.floor(Math.random()*icons.length)];
+
+        item.style.left = Math.random()*100 + "vw";
+
+        item.style.animationDuration = (3+Math.random()*4)+"s";
+
+        document.body.appendChild(item);
+
+        setTimeout(() => item.remove(),7000);
+
+    }
+
+}
+
+
+// WHATSAPP CONFIRMATION
+
+function sendWhatsApp() {
+
+    const date = document.getElementById("date").value;
+
+    const time = document.getElementById("time").value;
+
+    if(!date || !time) {
+
+        alert("Mekdes! Choose a date and time first 😂❤️");
+
+        return;
+
+    }
+
+    // CHANGE THIS TO YOUR WHATSAPP NUMBER
+    // Example: Ethiopia = 251955986242
+
+    const phone = "251955986242";
+
+    const message =
+`🚨 DATE CONFIRMATION 🚨
+
+Hey Samuel! 😂❤️
+
+Mekdes has selected your date invitation!
+
+📍 Location: Dilla
+📅 Date: ${date}
+⏰ Time: ${time}
+
+Mission status: ACCEPTED 🥳
+
+Let's confirm our plans together!
+
+From: Mekdes 💕`;
+
+    const url = "https://wa.me/" + phone +
+                "?text=" + encodeURIComponent(message);
+
+    window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
